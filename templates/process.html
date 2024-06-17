@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Website - Form</title>
+    <link rel="stylesheet" href="processed.css">
+    <style>
+        /* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=popins:wght@200;300;400;500;600;700&display=swap");
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
+}
+:root{
+    --main-color: #fe5b3d;
+    --second-color: #ffac38;
+    --text-color:#444;
+    --gradient: linear-gradient(#fe5b3d, #ffac38);
+}
+
+html::-webkit-scrollbar{
+    width: 0.5 rem;
+}
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+section{
+    padding: 50px 100px;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eeeff1;
+    padding: 15px 100px;
+}
+.logo img{
+    width: 40px;
+}
+.navbar{
+    display: flex;
+}
+.navbar li{
+    position: relative;
+}
+.navbar a{
+    font-size: 1rem;
+    padding: 10px 20px ;
+    color: var(--text-color);
+    font-weight: 500;
+}
+.navbar a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    transition: 0.5s;
+}
+.navbar a:hover::after{
+    width: 100%;
+}
+.header-btn .sign-in{
+    background: #474fa0;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.header-btn .sign-in:hover{
+    color: #fe5b3d;
+}
+
+
+body {
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #eeeff1;
+    padding: 15px 100px;
+}
+
+.logo img {
+    width: 40px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: #444;
+    font-weight: 500;
+}
+
+
+/* Update background color for the webpage */
+body {
+    background-color: #fff;
+}
+
+/* Additional CSS for the form container */
+.form-container {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.form-container .form-heading h2 {
+    margin-bottom: 20px;
+    color: var(--main-color);
+}
+
+.form-container form {
+    display: flex;
+    justify-content: center;
+}
+
+.form-table-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #ccc; /* Add border for the entire table */
+}
+
+.form-table td {
+    padding: 10px;
+    border: 1px solid #ddd; /* Add border for table cells */
+}
+
+.form-table label {
+    font-weight: bold;
+}
+
+.form-table input[type="text"],
+.form-table input[type="tel"],
+.form-table input[type="email"],
+.form-table input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-table input[type="submit"].btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--main-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form-table input[type="submit"].btn:hover {
+    background: #ff8c6a;
+}
+
+
+
+
+</style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><img src="static/jeep.png" alt=""></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#ride">Ride</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+        <div class="header-btn">
+            <a href="up" class="sign-up">Sign up</a>
+            <a href="in" class="sign-in">Sign in</a>
+        </div>
+    </header>
+
+    <section class="form-container">
+        <div class="form-heading">
+            <h2>Fill in the details to book a car</h2>
+        </div>
+        <form action="#">
+            <table class="form-table">
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="mobile">Mobile no.</label></td>
+                    <td><input type="tel" id="mobile" name="mobile" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="pick-date">Pick-up Date</label></td>
+                    <td><input type="date" id="pick-date" name="pick-date" required></td>
+                </tr>
+                <tr>
+                    <td><label for="place">Place</label></td>
+                    <td><input type="text" id="place" name="place" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Process" class="btn"></td>
+                </tr>
+            </table>
+        </form>
+    </section>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+</body>
+</html>

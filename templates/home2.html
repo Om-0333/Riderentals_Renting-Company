@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=popins:wght@200;300;400;500;600;700&display=swap");
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
+}
+:root{
+    --main-color: #fe5b3d;
+    --second-color: #ffac38;
+    --text-color:#444;
+    --gradient: linear-gradient(#fe5b3d, #ffac38);
+}
+
+html::-webkit-scrollbar{
+    width: 0.5 rem;
+}
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+section{
+    padding: 50px 100px;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eeeff1;
+    padding: 15px 100px;
+}
+.logo img{
+    width: 40px;
+}
+.navbar{
+    display: flex;
+}
+.navbar li{
+    position: relative;
+}
+.navbar a{
+    font-size: 1rem;
+    padding: 10px 20px ;
+    color: var(--text-color);
+    font-weight: 500;
+}
+.navbar a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    transition: 0.5s;
+}
+.navbar a:hover::after{
+    width: 100%;
+}
+#menu-icon{
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+}
+.header-btn a{
+    padding: 10px 20px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+.header-btn .sign-in{
+    background: #474fa0;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.header-btn .sign-in:hover{
+    color: #fe5b3d;
+}
+.header-btn .sign-up{
+    background: #474fa0;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.header-btn .sign-up:hover{
+    color: #fe5b3d;
+}
+
+.home{
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background: url(static/homeweb.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    display: grid;
+    align-items:center ;
+    grid-template-columns: repeat(2, 1fr);
+}
+.text h1{
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+}
+.textspan{
+    color: var(--main-color);
+}
+.text p{
+    margin: 00.5rem 0 1rem;
+}
+.app-stores{
+    display: flex;
+}
+.app-stores img{
+    width: 100px;
+    margin-right:1rem ;
+    cursor: pointer;
+}
+.form-container form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    bottom: 4rem;
+    left: 100px;
+    background: #fff ;
+    padding: 20px;
+    border-radius: 0.5rem;
+}
+.input-box{
+    flex: 1 1 7rem;
+    display: flex;
+    flex-direction: column;
+}
+.input-box span{
+    font-weight: 500;
+}
+.input-box input{
+    padding: 7px;
+    outline: none;
+    border: none;
+    background: #eeeff1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+.form-container form .btn{
+    flex: 1 1 7rem;
+    padding: 10px 34px;
+    border: none;
+    border-radius: 0.5rem;
+    background: #474fa0;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.form-container form .btn:hover{
+    background: #fe5b3d;
+}
+.heading{
+    text-align: center;
+}
+.heading span{
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.heading h1{
+    font-size: 2rem;
+}
+.ride-container{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(250px,auto));
+    gap:1rem;
+    margin-top: 2rem;
+}
+.ride-container .box{
+    text-align: center;
+    padding: 20px;
+}
+.ride-container .box .bx{
+    font-size: 34;
+    padding: 10px;
+    background: #eeeff1;
+    border-radius: 0.5rem;
+    color: var(--main-color);
+}
+.ride-container .box h2{
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 1.4rem 0 0.5 rem;
+}
+.ride-container .box .bx:hover{
+    background: var(--gradient);
+    color: #fff;
+}
+.services-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,auto));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.services-container .box{
+    padding: 10px;
+    border-radius: 1rem;
+    box-shadow: 1px 4px 41px rgba(0,0,0,0.1) ;
+}
+.services-container .box .box-img{
+    width: 100%;
+    height: 200px;
+}
+.services-container .box .box-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+}
+.services-container .box .p{
+    padding: 0 10px;
+    border: 1px solid var(--text-color);
+    width: 58px;
+    border-radius: 0.5rem;
+    margin: 1rem 0 1rem;
+}
+.services-container .box h3{
+   font-weight: 500; 
+}
+.services-container .box h2{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--main-color);
+    margin: 0.2rem 0 0.5rem;
+}
+.services-container .box .btn{
+    display: flex;
+    justify-content: center;
+    background: #474fa0;
+    color: #fff;
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+.services-container .box .btn:hover{
+    background: var(--main-color);
+}
+
+.about{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 2rem;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.about-img img{
+    width: 100%;
+}
+.about-text span{
+     font-weight: 500;
+     color: var(--main-color);
+     text-transform: uppercase;
+}
+.about-text p{
+    margin: 0.5rem 0 1.4rem;
+}
+.about-text .btn{
+    padding: 10px 20px;
+    background: #474fa0;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.about-text .btn:hover{
+    background: var(--main-color);
+}
+.reviews-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,auto));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.rev-img{
+    width: 70px;
+    height: 70px;
+}
+.rev-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid var(--second-color);
+}
+.reviews-container .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 1px 4px 41px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+}
+.reviews-container .box h2{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.5rem;
+}
+
+.reviews-container .box p{
+    font-style: italic;
+}
+.reviews-container .box .stars .bx{
+    color: #fe5b3d;
+}
+.newsletter{
+    background: linear-gradient(to top right, #fe5b3d, #ffac38);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.newsletter h2{
+    color: #fff;
+    font-size:1.8rem;
+}
+.newsletter .box{
+    margin-top: 1rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    padding: 4px 8px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+.newsletter .box input{
+    border: none;
+    outline: none;
+}
+.newsletter .box .btn{
+    background: #474fa0;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 0.5rem;
+}
+.copyright{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.social a{
+    color: #444;
+    padding: 10px;
+    font-size: 21px;
+}
+@media(max-width:991px){
+    header{
+        padding: 18px 40px;
+    }
+    section{
+        padding: 50px 40px;
+    }
+}
+@media(max-width:881px){
+    .home{
+        background-position: left;
+    }
+    .form-container form{
+        bottom:0.2rem;
+        left:40px;
+    }
+}
+@media(max-width:768px){
+    header{
+        padding: 11px 40px;
+    }
+    #menu-icon{
+        display:initial;
+    }
+    .sign-up{
+        display:none;
+    }
+    .text h21{
+        font-size:2.5rem;
+    }
+    .home{
+        grid-template-columns: 1fr;
+    }
+    .form-container form{
+        position: unset;
+    }
+    header .navbar{
+        position: absolute;
+        top:-500px;
+        left:0;
+        right:0;
+        display:flex;
+        flex-direction:column;
+        background:#fff;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+        transition:0.2 ease;
+        text-align:left;
+    }
+    .navbar .active{
+        top:100%;
+    }
+    .navbar a{
+        padding:1rem;
+        border-left:2px solid var(--main-color);
+        margin:1rem;
+        display:block;
+    }
+    .navbar a:hover{
+        color: #fff;
+        background: var(--main-color);
+        border: none;
+    }
+    .navbar a::after{
+        display: none;
+    }
+    .heading span{
+        font-size: 0.9 rem;
+        font-weight: 600;
+    }
+    .heading h1{
+        font-size: 1.3rem;
+    }
+    .about-container{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .about-img{
+        padding: 1rem;
+        border: 2;
+    }
+}
+@media(max-width:568px) {
+    .copyright{
+        flex-direction: column;
+    }
+    .newsletter .box{
+        width: 284px;
+    }
+}
+@media(max-width:350px){
+    header{
+        padding: 4px 14px;
+    }
+    .logo img{
+        width: 30px;
+    }
+    .section{
+        padding: 50px 14px;
+    }
+    .header-btn .sign-in{
+        padding: 7px 10px;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .text h1{
+        font-size: 1rem;
+    }
+    .form-container{
+        padding-top :2rem;
+    }
+    .services-container{
+        grid-template-columns: repeat(auto-fit,minmax(254px,auto));
+    }
+} 
+
+    </style>
+</head>
+
+    <header>
+        <a href="#" class="logo"><img src="static/jeep.png" alt=""></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar">
+            <li>
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <a href="#ride">Ride</a>
+            </li>
+            <li>
+                <a href="#services">Services</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#reviews">Reviews</a>
+            </li>
+        </ul>
+        <div class="header-btn">
+            <a href="up" class="sign-up">Sign up</a>
+            <a href="in" class="sign-in">Sign in</a>
+        </div>
+    </header>
+
+    <!--Home-->
+    <section class="home" id="home">
+        <div class="text">
+            <h1><span class="textspan">Looking</span> to <br>rent a car</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adi <br> pisicing elit. Itaque, omnis cum.</p>
+            <div class="app-stores">
+                <img src="static/ios.png" alt="">
+                <img src="static/512x512.png" alt="">
+            </div>
+        </div>
+        <div class="form-container">
+            <form action="">
+                <div class="input-box">
+                    <span>Location</span>
+                    <input type="search" name="" id="" placeholder="Search Places">
+                </div>
+                <div class="input-box">
+                    <span>Pick-up Date</span>
+                    <input type="date" name="" id="">
+                </div>
+                <div class="input-box">
+                    <span>Return Date</span>
+                    <input type="date" name="" id="">
+                </div>
+                <input type="submit" name="" id="" class="btn">
+            </form>
+        </div>
+    </section>
+    <!--ride-->
+    <section class="ride" id="ride">
+        <div class="heading">
+            <span>How its work</span>
+            <h1>Rent With 3 Easy Steps</h1>
+        </div>
+        <div class="ride-container">
+            <div class="box">
+                <i class="bx bxs-map"></i>
+                <h2>Choose a Location</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, minus.
+                </p>
+            </div>
+            <div class="box">
+                <i class='bx bx-calendar-check'></i>
+                <h2>Pick-Up date</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, minus.
+                </p>
+            </div>
+            <div class="box">
+                <i class='bx bxs-calendar-star'></i>
+                <h2>Book A Car</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, minus.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!--services-->
+
+    <section class="services" id="services">
+        <div class="heading">
+            <span>Best services </span>
+            <h1>Explore out top deals <br> from top rated dealers</h1>
+        </div>
+        <div class="services-container">
+            <div class="box">
+                <div class="box-img">
+                    <img src="static/car1.jpg" alt="">
+                </div>
+                <p>2017</p>
+                <h3>2018 Honda Civics</h3>
+                <h2>Rs.58500 | Rs. 358<span>/month</span></h2>
+                <a href="#" class="btn">Rent Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="static/car2.jpg" alt="">
+                </div>
+                <p>2017</p>
+                <h3>2018 Honda Civics</h3>
+                <h2>Rs.58500 | Rs. 358<span>/month</span></h2>
+                <a href="#" class="btn">Rent Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="static/car3.jpg" alt="">
+                </div>
+                <p>2017</p>
+                <h3>2018 Honda Civics</h3>
+                <h2>Rs.58500 | Rs. 358<span>/month</span></h2>
+                <a href="#" class="btn">Rent Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="static/car4.jpg" alt="">
+                </div>
+                <p>2017</p>
+                <h3>2018 Honda Civics</h3>
+                <h2>Rs.58500 | Rs. 358<span>/month</span></h2>
+                <a href="#" class="btn">Rent Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="static/car5.jpg" alt="">
+                </div>
+                <p>2017</p>
+                <h3>2018 Honda Civics</h3>
+                <h2>Rs.58500 | Rs. 358<span>/month</span></h2>
+                <a href="#" class="btn">Rent Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="static/car6.jpg" alt="">
+                </div>
+                <p>2017</p>
+                <h3>2018 Honda Civics</h3>
+                <h2>Rs.58500 | Rs. 358<span>/month</span></h2>
+                <a href="#" class="btn">Rent Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!--About-->
+    <section class="about" id="about">
+        <div class="heading">
+            <span>About Us </span>
+            <h1>Best Customer Experience </h1>
+        </div>
+        <div class="about">
+            <div class="about-img">
+                <img src="static/about.png" alt="">
+            </div>
+            <div class="about-text">
+                <span>About Us</span>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis sunt officia neque eum tenetur magnam perferendis beatae! Sunt, doloremque blanditiis!
+
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto voluptatem repellendus voluptas repellat soluta recusandae incidunt libero quis excepturi reprehenderit.
+
+                </p>
+                <a href="#"class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!--reviews-->
+    <section class="reviews" id="reviews">
+        <div class="heading">
+            <span>Reviews </span>
+            <h1>What our Customer Says </h1>
+        </div>
+        <div class="reviews-container">
+            <div class="box">
+                <div class="rev-img">
+                    <img src="static/rev1.jpg" alt="">
+                </div>
+                <h2>Someone Name</h2>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, possimus assumenda. Quas esse voluptate quod tenetur eveniet iure.</p>
+            </div>
+            <div class="box">
+                <div class="rev-img">
+                    <img src="static/rev2.jpg" alt="">
+                </div>
+                <h2>Someone Name</h2>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, possimus assumenda. Quas esse voluptate quod tenetur eveniet iure.</p>
+            </div>
+            <div class="box">
+                <div class="rev-img">
+                    <img src="static/rev3.jpg" alt="">
+                </div>
+                <h2>Someone Name</h2>
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, possimus assumenda. Quas esse voluptate quod tenetur eveniet iure.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!--Newsletter-->
+    <section class="newsletter">
+        <h2>Subscribe To Newsletter</h2>
+        <div class="box">
+            <input type="text" placeholder="Enter Your Email...">
+            <a href="#" class="btn">Subscribe</a>
+        </div>
+    </section>
+    <!--copy-->
+    <section class="copyright">
+        <p>&#169; Carrento All Right Reserved</p>
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+        </div>
+    </section>
+    <script src="https://unpkg.com/scrollreveal"> </script>
+    <script src="main.js"> </script>
+</body>
+</html>

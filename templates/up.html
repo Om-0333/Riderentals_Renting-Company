@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Car Rental</title>
+    <link rel="stylesheet" href="up.css">
+    <style>
+        /* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=popins:wght@200;300;400;500;600;700&display=swap");
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
+}
+:root{
+    --main-color: #fe5b3d;
+    --second-color: #ffac38;
+    --text-color:#444;
+    --gradient: linear-gradient(#fe5b3d, #ffac38);
+}
+
+html::-webkit-scrollbar{
+    width: 0.5 rem;
+}
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+section{
+    padding: 50px 100px;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eeeff1;
+    padding: 15px 100px;
+}
+.logo img{
+    width: 40px;
+}
+.navbar{
+    display: flex;
+}
+.navbar li{
+    position: relative;
+}
+.navbar a{
+    font-size: 1rem;
+    padding: 10px 20px ;
+    color: var(--text-color);
+    font-weight: 500;
+}
+.navbar a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    transition: 0.5s;
+}
+.navbar a:hover::after{
+    width: 100%;
+}
+.header-btn .sign-in{
+    background: #474fa0;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.header-btn .sign-in:hover{
+    color: #fe5b3d;
+}
+
+
+body {
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #eeeff1;
+    padding: 15px 100px;
+}
+
+.logo img {
+    width: 40px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: #444;
+    font-weight: 500;
+}
+
+.header-btn a {
+    padding: 10px 20px;
+    color: #444;
+    font-weight: 500;
+}
+
+.form-container {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--main-color);
+}
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fe5b3d;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffac38;
+}
+
+footer {
+    background-color: #eeeff1;
+    padding: 20px 100px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer p {
+    color: #444;
+}
+
+.social a {
+    color: #444;
+    padding: 10px;
+    font-size: 21px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 40px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 568px) {
+    .form-container {
+        max-width: 300px;
+    }
+}
+</style>
+    </head>
+<body>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <header>
+        <a href=" " class="logo"><img src="static/jeep.png" alt=""></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar">
+            <li>
+                <a href='home2'>Home</a>
+            </li>
+            <li>
+                <a href="#ride">Ride</a>
+            </li>
+            <li>
+                <a href="#services">Services</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#reviews">Reviews</a>
+            </li>
+        </ul>
+        <div class="header-btn">
+            <a href="in" class="sign-in">Sign in</a>
+        </div>
+    </header>
+
+    <!-- Sign Up Form -->
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form action="/up" method="post">
+            {%csrf_token%}
+        <form id ="up" onsubmit="return redirectToHomePage()">
+            
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Create a User name" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+    
+        <script>
+            function redirectToHomePage() {
+                // Perform your sign-up process here
+    
+                // If sign-up is successful, redirect to the home page
+                window.location.href = "/index";
+                return false; // Prevent form submission
+            }
+        </script>
+    
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&#169; Carrento All Right Reserved</p>
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+        </div>
+    </footer>
+</body>
+</html>
