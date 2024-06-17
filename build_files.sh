@@ -1,4 +1,2 @@
-echo "BUILD START"
-python3.9.7 -m pip install -r requirements.txt
-python3.9.7 manage.py collectstatic --noinput --clear
-echo "BUILD END"
+pip install -r requirements.txt
+python manage.py collectstatic --noinput
