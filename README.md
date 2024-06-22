@@ -10,6 +10,7 @@ Ride Rentals is a Django-based web application that allows users to rent cars on
 - Car reservation and booking management
 - User-friendly interface for easy navigation and interaction
 - Integration with SQLite database for efficient data storage and retrieval
+- Make database migration to PostgreSQL for database deployment on railway.app
 
 ## Technologies Used
 
