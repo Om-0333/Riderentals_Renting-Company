@@ -79,6 +79,7 @@ Ride Rentals is a Django-based web application that allows users to rent cars on
 5. Manage your rental bookings and view your reservation history.
 
 ## Contributing
+It is not loading the images that are in the static folder please suggest the solution.
 
 Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request. Make sure to follow the existing code style and guidelines.
 
